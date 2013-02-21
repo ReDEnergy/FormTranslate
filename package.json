@@ -1,0 +1,16 @@
+{
+    "id": "formtranslate@gabrielivanica.com", 
+
+    "name": "formtranslate",
+    "fullName": "FormTranslate", 
+    "author": "Gabriel Ivanica", 
+ 
+    "description": "Live translations using Google Translate",
+
+	"icon" : "data/images/icon48.png",
+	"icon64" : "data/images/icon64.png",
+
+    "license": "LGPL 3.0", 
+    "version": "0.1" 
+
+}
