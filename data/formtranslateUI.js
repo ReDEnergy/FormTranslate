@@ -83,17 +83,19 @@
 		inputChanged: function (e) {
 
 			if (Events.get_value)
-				Events.text = Events.elem.textContent;
+				Events.text = e.target.value;
 			else
-				Events.text = Events.elem.value;	
-			
-			clearTimeout(Events.timeoutID);
+				Events.text = e.target.textContent;	
 
-			Events.timeoutID = setTimeout(Events.translateText, 1000);
+			console.log("text: ", Events.text);
+
+			clearTimeout(Events.timeoutID);
+			Events.timeoutID = setTimeout( Events.translateText, 1000);
+			
 		},			
 
 		translateText : function () {
-			console.log("Sent Translate Query: ", text);
+			console.log("Sent Translate Query: ", Events.text);
 			// self.port.emit('translate', text);
 		},
 
@@ -108,12 +110,7 @@
 				
 			console.log(this.get_value);
 				
-			this.elem.addEventListener('input', function (e) {
-				console.log("text: ", e.target.value);
-				Events.text = e.target.value;
-				clearTimeout(Events.timeoutID);
-				Events.timeoutID = setTimeout(Events.translateText, 1000);
-			});
+			this.elem.addEventListener('input', Events.inputChanged);
 		},
 
 		stopListen : function () {
