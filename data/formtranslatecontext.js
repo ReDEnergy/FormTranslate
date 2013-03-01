@@ -6,7 +6,7 @@
 
 (function ReD_FormTranslate_Context_ID() {
 
-	console.log("Identification attached");
+	console.log("Context Menu Script Attached");
 
 	function Message (event_name, obj_msg) {
 	  this.event = event_name;
@@ -15,9 +15,14 @@
 	
 	self.on("click", function (node, data) {
 
-		self.postMessage(new Message('init', document.URL));
-
-		node.setAttribute('formtranslateid', 'true');
+		
+		if (node.getAttribute('formtranslateid')) {
+			self.postMessage(new Message('started', null));
+		}
+		else {
+			node.setAttribute('formtranslateid', 'true');
+			self.postMessage(new Message('init', document.URL));
+		}
 		
 	});
 

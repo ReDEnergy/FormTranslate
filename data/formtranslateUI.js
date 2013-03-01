@@ -72,19 +72,20 @@
 		
 	}
 	
+	self.port.on("init", function() {
+		UI.init();
+	});
+
 	self.port.on("response", function(response) {
 		console.log("Response received: ", response);		
 		translation.textContent = response;
 	});
-
-	self.port.on("init", function() {
-		UI.init();
-	});
 	
-	self.port.on("stop", function() {
+	self.port.on("destroy", function() {
+		console.log("Destroy UI");
 		UI.remove();
 	});
-	
+
 })();
 
 
