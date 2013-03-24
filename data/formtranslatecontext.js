@@ -14,16 +14,12 @@
 	}
 	
 	self.on("click", function (node, data) {
+		
+		if (node.getAttribute('formtranslateid'))
+			return;
 
-		
-		if (node.getAttribute('formtranslateid')) {
-			self.postMessage(new Message('started', null));
-		}
-		else {
-			node.setAttribute('formtranslateid', 'true');
-			self.postMessage(new Message('init', document.URL));
-		}
-		
+		node.setAttribute('formtranslateid', 'true');
+		self.postMessage(new Message('init', null));
 	});
 
 }) ();
